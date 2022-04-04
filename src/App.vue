@@ -13,13 +13,26 @@
           <router-link  to="/file"><div class="three">归档</div></router-link>
           <router-link to="/chat"><div class="four">互动</div></router-link>
           <router-link to="/about"><div class="five">关于</div></router-link>
-          <div class="more">更多</div>
+          <div class="more"><span>更多</span>
+            <div class="box">
+              <ul>
+                <router-link to="/space"> <li class="l1">空间</li></router-link>
+                 <router-link to="/photo"><li class="l2">图库</li></router-link>
+                <li class="l3" @click="go_qqemil">qq邮箱登录</li>
+              </ul>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+    <div class="login">
+      <div class="login_title">QQ邮箱登录</div>
+      <div class="form">
       </div>
     </div>
     <!-- 返回顶部图标 -->
     <div class="scroll">
-				<img src="./img/backTop.png"  class="back"/>
+				<img src="./img/backTop.png"  title ="呜呼呼~" class="back"/>
 		</div>
     <div class="banner"></div>
     <router-view />
@@ -35,26 +48,29 @@
         <span>fandaBlog</span><span>这是一个新的开始</span>
       </div>
     </div>
+    <!-- 引入画布 -->
+    <canvas id="c" width="300" height="150"></canvas>
   </div>
 </template>
-
 <script>
 import {countDown} from './assets/js/time.js'
 import {backTop,showbtn} from '@/assets/js/backtop.js'
+import { cavans} from "./assets/js/cavans.js"
  
 export default {
   data() {
     return {
       blogname: "Another Dimension",
       motto: "你若安好，我便无恙", //便是这世界上最美好的时光
-      datatime: "",
-    };
+      datatime: ""
+    }
   },
   methods: {
     goAdmin() {
       console.log("进入后台管理页面");
     },
     countTime(){
+     
       var that=this;
       setInterval(function(){
         that.datatime=countDown()
@@ -63,17 +79,33 @@ export default {
     conss(){
        showbtn();
     },
+    mycanvas(){
+       cavans();
+    },
     backtop(){
       backTop();
-    }
+    },
+    //展示登录页面
+    go_qqemil(){
+      console.log("显示登录页面")
+    },
+    handleSubmit(name) {
+                this.$refs[name].validate((valid) => {
+                    if (valid) {
+                        this.$Message.success('Success!');
+                    } else {
+                        this.$Message.error('Fail!');
+                    }
+                })
+            }
   },
   // 一般在初始化页面完成后，再对dom节点进行相关操作,
     // 一般在初始化页面完成后，再对dom节点进行相关操作,
   created(){
-    this.countTime()
-    
+    this.countTime();
   },
   mounted(){
+    this.mycanvas();
       window.addEventListener("scroll",this.conss); 
       var img=document.querySelector('.back');
       img.addEventListener('click',this.backtop);
@@ -141,7 +173,6 @@ export default {
       line-height: 50px;
       color: white;
       text-align: right;
-      
     }
     .one{
       background: url("./img/index.png") no-repeat center left;
@@ -167,17 +198,68 @@ export default {
       cursor: pointer;
       background: url("./img/more.png") no-repeat center left;
        background-size: 30%;
+       position: relative;
+      .box{
+        width: 120px;
+        height: 120px;
+        position: absolute;
+        top: 50px;
+        left: -10px;
+        background:rgb(85, 171, 211);
+       
+        display: none;
+        ul li{
+          list-style: none;
+          line-height: 40px;
+          text-align: left;
+          padding-left: 30px;
+          color: white;
+        }
+        .l1{
+           background: url("./img/qq12.png") no-repeat center left;
+           background-size: 20%;
+        }
+        .l2{
+           background: url("./img/photo.png") no-repeat center left;
+           background-size: 18%;
+        }
+        .l3{
+           background: url("./img/qqemail.png") no-repeat center left;
+           background-size: 16%;
+        }
+      }
     }
-    .more:hover::after{
-      contain: "";
-      width: 60px;
-      height: 100px;
-      background: orange;
-      position: absolute;
-      bottom: 100px;
+    .more:hover .box{
+      display: block;
     }
   }
-  
+}
+.back{
+  cursor: pointer;
+}
+.login{
+  width: 400px;
+  height: 300px;
+  position:fixed;
+  top: 50%;
+  left: 50%;
+  margin:-150px 0px 0px -200px;
+  background: orchid;
+  display: none;
+  border-radius: 10px;
+  z-index: 99;
+  .login_title{
+    line-height: 60px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+    color: white;
+    letter-spacing: 2px;
+  }
+  .form{
+    width: 90%;
+    margin: 0 auto;
+  }
 }
 
 .banner {
@@ -195,5 +277,12 @@ export default {
   div {
     line-height: 25px;
   }
+}
+#c{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
 }
 </style>

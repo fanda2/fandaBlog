@@ -6,18 +6,19 @@
     right: 2%;
     /* background: red; */
     overflow: hidden;
-    transform: move 0.4s ease infinite;
+    /* transform: move 0.4s ease infinite; */
 }
 
 .scroll img {
     width: 70px;
 }
 
-@keyframes move {
+
+/* @keyframes move {
     from {
         transform: translateY(10);
     }
     to {
         transform: translateY(0);
     }
-}
+} */

@@ -45,6 +45,18 @@ const routes = [{
             import ("../views/detial.vue"),
         name: "Detial",
     },
+    {
+        path: "/photo",
+        component: () =>
+            import ("../views/photo.vue"),
+        name: "Photo",
+    },
+    {
+        path: "/space",
+        component: () =>
+            import ("../views/space.vue"),
+        name: "Space",
+    },
 
 ];
 

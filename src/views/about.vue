@@ -74,8 +74,9 @@ export default {
    width: 65%;
   min-width: 900px;
   min-height: 1800px;
+    background: white;
+  border-radius: 5px;
   margin: 10px auto;
-  // background: palevioletred;
   border: 1px solid rgba(206, 206, 206, 0.8);
   display: flex;
   justify-content: space-between;
