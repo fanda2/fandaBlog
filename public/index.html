@@ -1,17 +1,40 @@
 <!DOCTYPE html>
 <html lang="">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
-  </head>
-  <body>
+    <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+    <title>fandablog</title>
+    <!-- 设置头部搞怪 -->
+    <script>
+        var OriginTitile = document.title,
+            titleTime
+        document.addEventListener('visibilitychange', function() {
+            undefined
+            if (document.hidden) { //如果切换到其他页面
+                document.title = '你别走，快回来！';
+                clearTimeout(titleTime);
+            } else { //处在当前的页面
+                document.title = '终于等到你啦';
+                titleTime = setTimeout(function() {
+                    undefined
+                    document.title = OriginTitile;
+                }, 2000);
+            }
+        });
+    </script>
+</head>
+
+<body>
     <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
+    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
+        Please enable it to continue.</strong>
+  </noscript>
     <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
+
+</body>
+
 </html>

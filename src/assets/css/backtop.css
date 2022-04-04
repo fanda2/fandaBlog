@@ -1,0 +1,23 @@
+.scroll {
+    width: 70px;
+    height: 0px;
+    position: fixed;
+    top: 0px;
+    right: 2%;
+    /* background: red; */
+    overflow: hidden;
+    transform: move 0.4s ease infinite;
+}
+
+.scroll img {
+    width: 70px;
+}
+
+@keyframes move {
+    from {
+        transform: translateY(10);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
