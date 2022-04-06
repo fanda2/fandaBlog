@@ -14,7 +14,6 @@ import 'mavon-editor/dist/css/index.css'
 // use
 Vue.use(mavonEditor)
 new Vue({
-    'el': '#main',
     data() {
         return { value: '' }
     }
@@ -36,6 +35,10 @@ axios.interceptors.request.use((config) => {
     return config;
 });
 
+//响应封装处理
+axios.interceptors.response.use((response) => {
+    return response.data
+})
 
 Vue.use(VueLazyLoad, {
     attempt: 1, // 尝试加载图片的数量
@@ -44,7 +47,8 @@ Vue.use(VueLazyLoad, {
     listenEvents: ['scroll'], // 滚动监听
 })
 
-// axios.defaults.baseURL = "http://8.142.81.85:8080";
+// axios.defaults.baseURL = "http://192.168.1.103:3012";
+axios.defaults.baseURL = "http://www.fjtbkyc.net:3000";
 
 
 

@@ -272,7 +272,8 @@ export default {
   text-align: center;
   width: 100%;
   height: 100px;
-  background: orange;
+  background: white;
+  border-top: 1px solid #ccc;
   padding-bottom: 10px;
   div {
     line-height: 25px;

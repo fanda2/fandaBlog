@@ -5,28 +5,14 @@
         <div class="top"></div>
         <div class="music"></div>
       <div class="time_line">
-         <Timeline>
-        <TimelineItem>
-            <p class="time">1976年</p>
-            <p class="content">Apple I 问世</p>
+        <!-- <Timeline>
+        <TimelineItem class="left" v-for="(item,i) in time_line" :key="i">
+            <p class="time">{{item.time}}</p>
+            <p class="content">{{item.content}}</p>
         </TimelineItem>
-        <TimelineItem>
-            <p class="time">1984年</p>
-            <p class="content">发布 Macintosh</p>
-        </TimelineItem>
-        <TimelineItem>
-            <p class="time">2007年</p>
-            <p class="content">发布 iPhone</p>
-        </TimelineItem>
-        <TimelineItem>
-            <p class="time">2010年</p>
-            <p class="content">发布 iPad</p>
-        </TimelineItem>
-        <TimelineItem>
-            <p class="time">2011年10月5日</p>
-            <p class="content">史蒂夫·乔布斯去世</p>
-        </TimelineItem>
-    </Timeline>
+       
+    </Timeline> -->
+     <Timeline/>
       </div>
       </div>
       <div class="rside">
@@ -40,14 +26,17 @@
 <script>
 import Message from '@/components/myMessage.vue'
 import IpAbout from '@/components/ipAbout.vue'
+import Timeline from '@/components/timeLine.vue'
 export default {
 
   components:{
      Message,
-     IpAbout
+     IpAbout,
+     Timeline
   },
    data() {
     return {
+      time_line:[{time:"2022/4/2",content:"开始计划设计"},{time:"2022/4/4",content:"基本完成框架搭建"}]
     };
   },
   methods: {

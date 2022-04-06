@@ -3,7 +3,7 @@
     <div class="top">
       <div class="title">{{ postmsg.title }}</div>
       <div class="submsg">
-        <div class="h_one">{{ postmsg.datatime }}</div>
+        <div class="h_one">{{ postmsg.stime }}</div>
         <div class="h_two">{{ postmsg.seenum }}</div>
         <div class="h_three">{{ postmsg.remark }}</div>
         <!-- <img src="../img/data.png"><span></span>
@@ -12,10 +12,10 @@
       </div>
     </div>
     <div class="center">
-      <img :src="postmsg.imgurl" />
+      <img :src="postmsg.cover" />
     </div>
     <div class="bottom">
-      <span>{{ postmsg.subtitle }}</span>
+      <span>{{ postmsg.description }}</span>
     </div>
   </div>
 </template>

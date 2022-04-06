@@ -86,10 +86,10 @@ export default {
   height: 120px;
   border-radius: 50%;
   box-shadow: 3px 3px 4px saddlebrown;
-  transition: all .1s;
+  transition: all .5s;
 }
 .avator:hover{
-    transform: rotate(180deg);
+    transform: rotate(350deg);
 }
 .link{
     width: 96%;

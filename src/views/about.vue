@@ -96,7 +96,7 @@ export default {
     width: 99%;
     margin: 0 auto;
     border-bottom: 1px solid olivedrab;
-    height: 100px;
+    min-height: 100px;
     display: flex;
     .avator {
       width: 25%;
