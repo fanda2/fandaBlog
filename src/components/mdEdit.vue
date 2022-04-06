@@ -4,14 +4,12 @@
             ref="md"
             placeholder="请输入文档内容..."
             :boxShadow="false"
-            style="z-index:1;border: 1px solid #d9d9d9;height:50vh"
+            style="z-index:1;border: 1px solid #d9d9d9;height:150vh"
             v-model="content"
             :toolbars="toolbars"
           />
-             <div id="main">
         <mavon-editor v-model="value" />
     </div>
-  </div>
 </template>
  
 <script>

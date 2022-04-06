@@ -20,10 +20,10 @@
         </div>
          <div>
           <mavon-editor
-            :value="itemDes"
+            :value="value"
             defaultOpen="preview"
             :boxShadow="false"
-            style="z-index: 1; height: 50vh"
+            style="z-index: 1; height: 100vh"
             :editable="false"
             :subfield="false"
             :toolbarsFlag="false"
@@ -56,12 +56,29 @@ export default {
     return {
       shuoshuo:
         "Hi,这里是梵大的博客，为了练习学到的东西,做了一个小站,希望大家多多建议，我会不断完善！",
-       itemDes:
-      "# github仓库使用 ## 一、仓库建立 1. 在登录后进入仓库创建界面，填写仓库名称和描述即可创建仓库![创建仓库](https://aiphoto-1305314152.cos.ap-chengdu.myqcloud.com/Internet%2Fgithub.png)2. 仓库主页的功能介绍- 修改项目介绍，点击edit",
+       value:
+      "",
     };
   },
-  methods: {},
+  methods: {
+      //获取文章信息
+    async getpost() {
+      var result = await this.$http.get("/post/post_byId", {
+        params: {
+          postid: 6,
+        },
+      });
+      if (result.status == 200) {
+        this.value = result.data.row2.content;
+      } else {
+        this.$Message.error("请检查网络或稍后重试");
+      }
+    },
+  },
   // 一般在初始化页面完成后，再对dom节点进行相关操作,
+  created(){
+    this.getpost();
+  }
 };
 </script>
 

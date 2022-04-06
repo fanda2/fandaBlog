@@ -33,7 +33,7 @@
             :value="postmsg.content"
             defaultOpen="preview"
             :boxShadow="false"
-            style="z-index: 1; height: 50vh"
+            style="z-index: 1; "
             :editable="false"
             :subfield="false"
             :toolbarsFlag="false"
@@ -226,7 +226,6 @@ export default {
 }
 .post_content{
   min-height: 1000px;
-  background: orange;
   mavon-editor{
     min-height: 1000px!important;
   }
