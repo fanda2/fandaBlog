@@ -89,7 +89,7 @@ export default {
   transition: all .5s;
 }
 .avator:hover{
-    transform: rotate(350deg);
+    transform: rotate(360deg);
 }
 .link{
     width: 96%;

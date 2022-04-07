@@ -2,18 +2,18 @@
   <div class="t_content">
     <div class="litem" v-for="(item, i) in timeLine" :key="i">
       <div class="left" v-if="i%2==0">
-        <div class="val">
-            <div class="v_content">
-                <div class="l_des text">{{item.content}}</div>
+        <div class="val" :style="{borderRightColor:item.color}">
+            <div class="v_content" :style="{borderBottomColor:item.color,color:item.color}">
+                <div class="l_des text">{{item.event}}</div>
                 <div class="l_cover"><img :src="item.imgurl" alt=""></div>
                 <div class="l_time">{{item.time}}</div>
             </div>
         </div>
       </div>
       <div class="right" v-else>
-        <div class="val2">
-             <div class="v_content">
-                 <div class="l_des text">{{item.content}}</div>
+        <div class="val2" :style="{borderLeftColor:item.color}">
+             <div class="v_content" :style="{borderBottomColor:item.color,color:item.color}">
+                 <div class="l_des text">{{item.event}}</div>
                 <div class="l_cover"><img :src="item.imgurl" alt=""></div>
                 <div class="l_time">{{item.time}}</div>
             </div>
@@ -118,18 +118,12 @@ export default {
     }
 }
 .text{
-    display: -webkit-box;
-
+display: -webkit-box;
 overflow: hidden;
-
 text-overflow: ellipsis;
-
 word-wrap: break-word;
-
 white-space: normal !important;
-
 -webkit-line-clamp: 2;
-
 -webkit-box-orient: vertical;
 }
 </style>

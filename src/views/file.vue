@@ -59,62 +59,79 @@ export default {
   },
   data() {
     return {
+      query:{
+        limit:10,
+        page:1,
+      },
       time_line: [
-        {
-          time: "2022/4/2",
-          color: "",
-          content:
-            "开始计划设计,开始设计界面和数据库，开始计划设计,开始设计界面和数据库，开始计划设计,开始设计界面和数据库",
-          imgurl:
-            "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202005%2F08%2F20200508112432_zxxgi.jpg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1651845555&t=93e63d4ed9851212e8d795f2f0598b8e",
-        },
-        {
-          time: "2022/4/4",
-          color: "",
-          content: "基本完成框架搭建",
-          imgurl:
-            "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202005%2F30%2F20200530210748_lwerm.jpg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1651845524&t=991759cc465886535a8c9ba926e2fbb8",
-        },
-        {
-          time: "2022/4/5",
-          content: "添加时间线",
-          color: "",
-          imgurl:
-            "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202006%2F08%2F20200608123749_jpihk.jpg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1651845524&t=665ac5d2264b890fb7a7807b078ef170",
-        },
-        {
-          time: "2022/4/5",
-          color: "",
-          content: "添加时间线",
-          imgurl:
-            "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp1-tt.byteimg.com%2Forigin%2Fpgc-image%2Fa0fb108768554e918084fde24529ad99%3Ffrom%3Dpc&refer=http%3A%2F%2Fp1-tt.byteimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1651845524&t=e8d16bc4846a3ef2882bb106558a56c0",
-        },
-        {
-          time: "2022/4/5",
-          color: "",
-          content: "添加时间线",
-          imgurl:
-            "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202005%2F30%2F20200530210748_lwerm.jpg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1651845524&t=991759cc465886535a8c9ba926e2fbb8",
-        },
-        {
-          time: "2022/4/5",
-          color: "",
-          content: "添加时间线",
-          imgurl:
-            "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202005%2F30%2F20200530210748_lwerm.jpg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1651845524&t=991759cc465886535a8c9ba926e2fbb8",
-        },
+        // {
+        //   time: "2022/4/2",
+        //   color: "",
+        //   content:
+        //     "开始计划设计,开始设计界面和数据库，开始计划设计,开始设计界面和数据库，开始计划设计,开始设计界面和数据库",
+        //   imgurl:
+        //     "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202005%2F08%2F20200508112432_zxxgi.jpg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1651845555&t=93e63d4ed9851212e8d795f2f0598b8e",
+        // },
+        // {
+        //   time: "2022/4/4",
+        //   color: "",
+        //   content: "基本完成框架搭建",
+        //   imgurl:
+        //     "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202005%2F30%2F20200530210748_lwerm.jpg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1651845524&t=991759cc465886535a8c9ba926e2fbb8",
+        // },
+        // {
+        //   time: "2022/4/5",
+        //   content: "添加时间线",
+        //   color: "",
+        //   imgurl:
+        //     "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202006%2F08%2F20200608123749_jpihk.jpg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1651845524&t=665ac5d2264b890fb7a7807b078ef170",
+        // },
+        // {
+        //   time: "2022/4/5",
+        //   color: "",
+        //   content: "添加时间线",
+        //   imgurl:
+        //     "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp1-tt.byteimg.com%2Forigin%2Fpgc-image%2Fa0fb108768554e918084fde24529ad99%3Ffrom%3Dpc&refer=http%3A%2F%2Fp1-tt.byteimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1651845524&t=e8d16bc4846a3ef2882bb106558a56c0",
+        // },
+        // {
+        //   time: "2022/4/5",
+        //   color: "",
+        //   content: "添加时间线",
+        //   imgurl:
+        //     "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202005%2F30%2F20200530210748_lwerm.jpg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1651845524&t=991759cc465886535a8c9ba926e2fbb8",
+        // },
+        // {
+        //   time: "2022/4/5",
+        //   color: "",
+        //   content: "添加时间线",
+        //   imgurl:
+        //     "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202005%2F30%2F20200530210748_lwerm.jpg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1651845524&t=991759cc465886535a8c9ba926e2fbb8",
+        // },
       ],
     };
   },
   methods: {
-    //重新加载画布
-    // mycanvas(){
-    //   window_resize()
-    // }
+    // 获取时间线的值
+    async get_Time(){
+            var result=await this.$http.get('/line/get_timeline',{params:{
+                limit:this.query.limit,
+                page:this.query.page
+            }})
+            console.log(result)
+            if(result.status==200)
+            {
+                this.time_line=result.data.row;
+            }else{
+                this.$Message.error("请检查网络或稍后重试");
+            }
+        }
   },
   // 一般在初始化页面完成后，再对dom节点进行相关操作,
   // mounted(){
   // }
+  created(){
+    this.get_Time();
+  }
 };
 </script>
 
