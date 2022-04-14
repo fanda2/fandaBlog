@@ -123,10 +123,11 @@ export default {
         left:10px;
     }
       .right:hover::before{
-        content: "";
+        content: "<h1>111<h1/>";
          display: block;
         width: 90px;
         height: 90px;
+        background: pink;
         background: url("../img/code.png") no-repeat center;
         background-size: 98%;
         position: absolute;

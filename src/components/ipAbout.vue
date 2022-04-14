@@ -20,14 +20,15 @@ export default {
             address:"四川省 成都市",
             newtime:"",
             suggestions:["这么晚了还不睡，一定有未完成的事情吧~","早呀，你不会辜负你的每一次起","早呀，美好的一一天需要先听听歌吧","中午咯，吃了午饭了吗？饭后散散步有助于身体健康","已经下午咯，美好的一天已经过半","这个点往窗外看，时候有夕阳呢","天暗下来，一天也快结束了，放下手中的工作享受一下生活吧！",],
-            suggest:""
+            suggest:"",
+            timer:"",  //定时器
         }
     },
     methods:{
       //获取现在的时间
     getNowdata(){
       var that=this;
-      setInterval(function(){
+      this.timer=setInterval(function(){
           that.newtime=timeNow();
       },1000)
     },
@@ -63,6 +64,9 @@ export default {
         this.getNowdata();
         this. getHour();
           this.ipmsg=returnCitySN["cip"];
+    },
+    beforeDestroy(){
+        clearInterval(this.timer)
     }
   
 }

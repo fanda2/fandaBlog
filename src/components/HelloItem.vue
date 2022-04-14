@@ -1,4 +1,5 @@
 <template>
+ <transition name="hello" appear>           
   <div class="itemcontainer">
     <div class="top">
       <div class="title">{{ postmsg.title }}</div>
@@ -18,6 +19,7 @@
       <span>{{ postmsg.description }}</span>
     </div>
   </div>
+   </transition>
 </template>
 <script>
 export default {
@@ -44,7 +46,7 @@ export default {
   width: 98%;
   height: 350px;
   margin: 10px auto;
-  // background: skyblue;
+  background: rgb(255, 255, 255);
   border-radius: 10px;
   box-shadow: 4px 4px 4px #ccc;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -101,5 +103,19 @@ export default {
     }
   }
 }
+.hello-enter-active{
+    animation: move .5s ease;
+}
+.hello-leave-active{
+    animation: move .5s reverse;
+}
+
+ @keyframes move{
+     from{
+         transform: translateX(-100%);
+     }
+     to{
+         transform: translateX(0);
+     }
+ }
 </style>
->

@@ -12,6 +12,7 @@
       <div class="rside">
           <Message  />
           <IpAbout />
+          <Bubble/>
       </div>
     </div>
   </div>
@@ -21,13 +22,14 @@
 import HelloItem from '@/components/HelloItem.vue'
 import Message from '@/components/myMessage.vue'
 import IpAbout from '@/components/ipAbout.vue'
-
+import Bubble from '@/components/pinkBubble.vue'
 export default {
   //  name: 'Home',
   components: {
     HelloItem,
     Message,
     IpAbout,
+    Bubble
   },
    data() {
     return {

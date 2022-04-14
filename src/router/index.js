@@ -57,6 +57,13 @@ const routes = [{
             import ("../views/space.vue"),
         name: "Space",
     },
+    {
+        path: "/todolist",
+        component: () =>
+            import ("../views/todolist.vue"),
+        name: "TodoList",
+    },
+
 
 ];
 

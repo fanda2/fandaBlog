@@ -18,6 +18,7 @@
               <ul>
                 <router-link to="/space"> <li class="l1">空间</li></router-link>
                  <router-link to="/photo"><li class="l2">图库</li></router-link>
+                <router-link to="/todolist"><li class="l4">TodoList</li></router-link>
                 <li class="l3" @click="go_qqemil">qq邮箱登录</li>
               </ul>
             </div>
@@ -56,13 +57,13 @@
 import {countDown} from './assets/js/time.js'
 import {backTop,showbtn} from '@/assets/js/backtop.js'
 import { cavans} from "./assets/js/cavans.js"
- 
 export default {
   data() {
     return {
       blogname: "Another Dimension",
       motto: "你若安好，我便无恙", //便是这世界上最美好的时光
-      datatime: ""
+      datatime: "",
+      timer:"",
     }
   },
   methods: {
@@ -70,9 +71,8 @@ export default {
       console.log("进入后台管理页面");
     },
     countTime(){
-     
       var that=this;
-      setInterval(function(){
+     this.timer=setInterval(function(){
         that.datatime=countDown()
       },1000);
     },
@@ -109,7 +109,10 @@ export default {
       window.addEventListener("scroll",this.conss); 
       var img=document.querySelector('.back');
       img.addEventListener('click',this.backtop);
-  }
+  },
+  beforeDestroy() {
+   clearInterval(this.timer);
+  },
 };
 </script>
 
@@ -201,13 +204,14 @@ export default {
        position: relative;
       .box{
         width: 120px;
-        height: 120px;
+        height: 0px;
         position: absolute;
         top: 50px;
         left: -10px;
         background:rgb(85, 171, 211);
-       
-        display: none;
+          transition: height .5s;
+        // display: none;
+        overflow: hidden;
         ul li{
           list-style: none;
           line-height: 40px;
@@ -227,10 +231,15 @@ export default {
            background: url("./img/qqemail.png") no-repeat center left;
            background-size: 16%;
         }
+         .l4{
+           background: url("./img/todo-list.png") no-repeat center left;
+           background-size: 20%;
+        }
       }
     }
     .more:hover .box{
-      display: block;
+      height: 160px;
+      // display: block;
     }
   }
 }
