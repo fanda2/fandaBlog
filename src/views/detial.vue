@@ -92,6 +92,9 @@ export default {
     this.getpost();
     //  console.log("111"+);
   },
+  mounted(){
+    this.$store.state.toptitle="文章详情"
+  }
 };
 </script>
 
@@ -103,18 +106,18 @@ export default {
 .main {
   width: 65%;
   min-width: 900px;
-  min-height: 1800px;
+  min-height: 900px;
   margin: 10px auto;
   background: white;
-  border-radius: 5px;
-  border: 1px solid rgba(206, 206, 206, 0.8);
   display: flex;
+   border-radius: 10px;
   justify-content: space-between;
 }
 .content {
   display: block;
   width: 77%;
-   border: 1px solid rgba(206, 206, 206, 0.8);
+ border-radius: 10px;
+  border: 1px solid rgba(206, 206, 206, 0.8);
   .pagenum {
     width: 100%;
     margin: 50px auto;
@@ -223,6 +226,8 @@ export default {
       }
 .rside {
   width: 23%;
+   margin-left: 10px;
+  border-radius: 10px;
 }
 .post_content{
   min-height: 1000px;

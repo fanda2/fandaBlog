@@ -19,17 +19,16 @@ export default {
 <style>
 .bubble_body{
    width: 98%;
-   min-width: 202px;
+    min-width: 202px;
     height: 300px;
     margin: 10px auto;
     text-align: center;
-    border-radius: 5px;
-  box-shadow: 2px 2px 3px #ccc;
-  border: 1px solid #ccc;
 	display: flex;
 	justify-content: center;
 	background: linear-gradient(150deg,#d299c2,#fef9d7);
 	overflow: hidden;
+	border-radius: 10px;
+    box-shadow: 4px 4px 4px #ccc,-3px -3px 4px rgb(238, 238, 238);
 }
 .bubble_container{
 	width: 100px;

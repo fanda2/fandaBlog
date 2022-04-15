@@ -52,9 +52,8 @@ export default {
   height: 450px;
   margin: 10px auto;
   text-align: center;
-  border-radius: 5px;
-  box-shadow: 2px 2px 3px #ccc;
-  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 4px 4px 4px #ccc,-3px -3px 4px rgb(238, 238, 238);
   div{
       line-height: 30px;
       font-size: 14px;

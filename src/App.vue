@@ -7,35 +7,40 @@
           <span class="blogname">{{ blogname }}</span>
           <span class="motto">{{ motto }}</span>
         </div>
-        <div class="right">
-          <router-link to="/"><div class="one">首页</div></router-link>
-          <router-link  to="/practice"><div class="two">实战</div></router-link>
-          <router-link  to="/file"><div class="three">归档</div></router-link>
-          <router-link to="/chat"><div class="four">互动</div></router-link>
-          <router-link to="/about"><div class="five">关于</div></router-link>
-          <div class="more"><span>更多</span>
+        <div class="right" >
+          <router-link to="/"><div ><i class="iconfont">&#xe609;</i> 首页</div></router-link >
+          <router-link to="/practice"><div  ><i class="iconfont">&#xe660;</i> 实战</div></router-link >
+          <router-link to="/file"><div ><i class="iconfont">&#xe62f;</i> 归档</div></router-link>
+          <router-link to="/chat"><div ><i class="iconfont">&#xe62b;</i> 互动</div></router-link>
+          <router-link to="/about"><div ><i class="iconfont"  >&#xe659;</i> 关于</div></router-link>
+          <div class="more">
+            <i class="iconfont">&#xe771;</i> <span> 更多</span>
             <div class="box">
               <ul>
-                <router-link to="/space"> <li class="l1">空间</li></router-link>
-                 <router-link to="/photo"><li class="l2">图库</li></router-link>
-                <router-link to="/todolist"><li class="l4">TodoList</li></router-link>
-                <li class="l3" @click="go_qqemil">qq邮箱登录</li>
+                <router-link to="/space"> <li  ><i class="iconfont">&#xe619;</i> 空间</li></router-link>
+                <router-link to="/photo"><li  ><i class="iconfont">&#xe7ff;</i> 图库</li></router-link>
+                <router-link to="/todolist"
+                  ><li  ><i class="iconfont">&#xe609;</i> TodoList</li></router-link
+                >
+                <li @click="go_qqemil" ><i class="iconfont">&#xe65e;</i> {{ loginbtn }}</li>
               </ul>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="login">
+    <div class="login" v-show="loginshow" id="box">
       <div class="login_title">QQ邮箱登录</div>
-      <div class="form">
-      </div>
+      <div class="form"></div>
     </div>
     <!-- 返回顶部图标 -->
     <div class="scroll">
-				<img src="./img/backTop.png"  title ="呜呼呼~" class="back"/>
-		</div>
-    <div class="banner"></div>
+      <img src="./img/backTop.png" title="呜呼呼~" class="back" />
+    </div>
+    <div class="banner">
+      <div class="toptitle">{{ toptitle }}</div>
+    </div>
+    <!-- 防止路由内容 -->
     <router-view />
     <div class="footer">
       <div class="top">本系统由vue + Node联合驱动</div>
@@ -49,69 +54,79 @@
         <span>fandaBlog</span><span>这是一个新的开始</span>
       </div>
     </div>
-    <!-- 引入画布 -->
-    <canvas id="c" width="300" height="150"></canvas>
   </div>
 </template>
 <script>
-import {countDown} from './assets/js/time.js'
-import {backTop,showbtn} from '@/assets/js/backtop.js'
-import { cavans} from "./assets/js/cavans.js"
+import { countDown } from "./assets/js/time.js";
+import { backTop, showbtn } from "@/assets/js/backtop.js";
 export default {
   data() {
     return {
       blogname: "Another Dimension",
       motto: "你若安好，我便无恙", //便是这世界上最美好的时光
       datatime: "",
-      timer:"",
-    }
+      timer: "",
+      islogin: false,
+      loginshow: false, //用于控制登录框是否显示
+    };
+  },
+  computed: {
+    toptitle() {
+      return this.$store.state.toptitle;
+    },
+    loginbtn() {
+      if (this.islogin) {
+        return "退出登录";
+      } else {
+        return "qq邮箱登录";
+      }
+    },
   },
   methods: {
     goAdmin() {
       console.log("进入后台管理页面");
     },
-    countTime(){
-      var that=this;
-     this.timer=setInterval(function(){
-        that.datatime=countDown()
-      },1000);
+    countTime() {
+      var that = this;
+      this.timer = setInterval(function () {
+        that.datatime = countDown();
+      }, 1000);
     },
-    conss(){
-       showbtn();
+    //返回顶部css
+    conss() {
+      showbtn();
     },
-    mycanvas(){
-       cavans();
-    },
-    backtop(){
+    //返回顶部
+    backtop() {
       backTop();
     },
     //展示登录页面
-    go_qqemil(){
-      console.log("显示登录页面")
+    go_qqemil() {
+      this.mycanvas()  //重新加载背景
+      this.loginshow = true;
     },
     handleSubmit(name) {
-                this.$refs[name].validate((valid) => {
-                    if (valid) {
-                        this.$Message.success('Success!');
-                    } else {
-                        this.$Message.error('Fail!');
-                    }
-                })
-            }
+      this.$refs[name].validate((valid) => {
+        if (valid) {
+          this.$Message.success("Success!");
+        } else {
+          this.$Message.error("Fail!");
+        }
+      });
+    },
   },
   // 一般在初始化页面完成后，再对dom节点进行相关操作,
-    // 一般在初始化页面完成后，再对dom节点进行相关操作,
-  created(){
+  // 一般在初始化页面完成后，再对dom节点进行相关操作,
+  created() {
     this.countTime();
   },
-  mounted(){
-    this.mycanvas();
-      window.addEventListener("scroll",this.conss); 
-      var img=document.querySelector('.back');
-      img.addEventListener('click',this.backtop);
+  mounted() {
+    window.addEventListener("scroll", this.conss);
+    var img = document.querySelector(".back");
+    img.addEventListener("click", this.backtop);
   },
   beforeDestroy() {
-   clearInterval(this.timer);
+    clearInterval(this.timer);
   },
 };
 </script>
@@ -170,94 +185,62 @@ export default {
     min-width: 400px;
     display: flex;
     justify-content: space-between;
-    div{
-      width: 55px;
-      padding:0 5px;
+    div {
+      width: 66px;
+      padding: 0 5px;
       line-height: 50px;
       color: white;
-      text-align: right;
     }
-    .one{
-      background: url("./img/index.png") no-repeat center left;
-       background-size: 30%;
-    }
-    .two{
-      background: url("./img/protact.png") no-repeat center left;
-       background-size: 30%;
-    }
-    .three{
-      background: url("./img/text.png") no-repeat center left;
-       background-size: 30%;
-    }
-    .four{
-      background: url("./img/hudong.png") no-repeat center left;
-       background-size: 30%;
-    }
-    .five{
-      background: url("./img/about.png") no-repeat center left;
-       background-size: 30%;
-    }
-    .more{
+    .more {
       cursor: pointer;
-      background: url("./img/more.png") no-repeat center left;
-       background-size: 30%;
-       position: relative;
-      .box{
+      background-size: 30%;
+      position: relative;
+      .box {
         width: 120px;
         height: 0px;
         position: absolute;
         top: 50px;
         left: -10px;
-        background:rgb(85, 171, 211);
-          transition: height .5s;
+        background: rgb(85, 171, 211);
+        transition: height 0.5s;
         // display: none;
         overflow: hidden;
-        ul li{
+        ul li {
           list-style: none;
           line-height: 40px;
-          text-align: left;
-          padding-left: 30px;
+          padding-left: 20px;
           color: white;
         }
-        .l1{
-           background: url("./img/qq12.png") no-repeat center left;
-           background-size: 20%;
-        }
-        .l2{
-           background: url("./img/photo.png") no-repeat center left;
-           background-size: 18%;
-        }
-        .l3{
-           background: url("./img/qqemail.png") no-repeat center left;
-           background-size: 16%;
-        }
-         .l4{
-           background: url("./img/todo-list.png") no-repeat center left;
-           background-size: 20%;
-        }
+
+      }
+      .box li:hover{
+        color: rgb(245, 112, 35);
       }
     }
-    .more:hover .box{
+    .more:hover .box {
       height: 160px;
       // display: block;
     }
   }
 }
-.back{
+.right div:hover{
+   color: rgb(245, 112, 35);
+}
+.back {
   cursor: pointer;
 }
-.login{
+.login {
   width: 400px;
   height: 300px;
-  position:fixed;
+  position: fixed;
   top: 50%;
   left: 50%;
-  margin:-150px 0px 0px -200px;
+  margin: -150px 0px 0px -200px;
   background: orchid;
-  display: none;
   border-radius: 10px;
+  animation: show-box 0.5s ease;
   z-index: 99;
-  .login_title{
+  .login_title {
     line-height: 60px;
     text-align: center;
     font-weight: bold;
@@ -265,34 +248,60 @@ export default {
     color: white;
     letter-spacing: 2px;
   }
-  .form{
+  .form {
     width: 90%;
     margin: 0 auto;
+  }
+}
+@keyframes show-box {
+  from {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
   }
 }
 
 .banner {
   width: 100%;
-  height: 300px;
-  background: url("./img/banner.jpg") no-repeat;
+  height: 400px;
+  background: url(https://api.ixiaowai.cn/gqapi/gqapi.php) no-repeat;
   background-size: cover;
 }
 .footer {
   text-align: center;
-  width: 100%;
+  // width: 100%;
   height: 100px;
-  background: white;
+  background: rgb(199, 235, 238);
   border-top: 1px solid #ccc;
   padding-bottom: 10px;
   div {
     line-height: 25px;
   }
 }
-#c{
+#c {
   position: absolute;
   top: 0;
   left: 0;
   z-index: -1;
   width: 100%;
+}
+// 顶部标题文字
+.toptitle {
+  width: 100%;
+  line-height: 400px;
+  text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+  color: white;
+  letter-spacing: 20px;
+}
+.iconfont{
+  font-size: 12px;
+}
+ul .iconfont{
+  font-size: 16px;
 }
 </style>

@@ -26,12 +26,11 @@ function backTop() {
     var timer = setInterval(function() {
         // showbtn();
         var step = -length / 20;
-        if (document.documentElement.scrollTop == 0) {
+        if (document.documentElement.scrollTop <= 0) {
             clearInterval(timer);
         }
-        document.documentElement.scrollTop =
-            document.documentElement.scrollTop + step;
-    }, 15);
+        document.documentElement.scrollTop = document.documentElement.scrollTop + step;
+    }, 10);
 }
 // img.addEventListener("click", function() {
 

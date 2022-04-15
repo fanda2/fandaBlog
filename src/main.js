@@ -4,13 +4,19 @@ import axios from "axios";
 import App from './App.vue'
 import './assets/css/base.css'
 import VueLazyLoad from 'vue-lazyload'
+//引入字体图标
+import './assets/iconfont/iconfont.css'
 // markdown样式
-import 'github-markdown-css'
+// import 'github-markdown-css'
 import ViewUI from "view-design"
 import 'view-design/dist/styles/iview.css'
 //编辑器
 import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
+//引入store
+import store from './store/index'
+
+
 // use
 Vue.use(mavonEditor)
 new Vue({
@@ -55,5 +61,6 @@ axios.defaults.baseURL = "http://www.fjtbkyc.net:3000";
 
 new Vue({
     router,
+    store,
     render: h => h(App),
 }).$mount('#app')

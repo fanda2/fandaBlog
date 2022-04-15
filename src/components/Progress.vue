@@ -30,9 +30,8 @@ export default {
   min-width: 190px;
   margin: 10px auto;
   padding: 0 10px;
-  border-radius: 5px;
-  box-shadow: 2px 2px 3px #ccc;
-  border: 1px solid #ccc;
+ border-radius: 10px;
+  box-shadow: 4px 4px 4px #ccc,-3px -3px 4px rgb(238, 238, 238);
 }
 .skill_item {
   display: flex;

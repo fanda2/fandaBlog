@@ -18,7 +18,7 @@
         <div class="clock">
           <Clock />
         </div>
-         <div>
+         <div class="introduce">
           <mavon-editor
             :value="value"
             defaultOpen="preview"
@@ -78,7 +78,10 @@ export default {
   // 一般在初始化页面完成后，再对dom节点进行相关操作,
   created(){
     this.getpost();
-  }
+  },
+  mounted() {
+        this.$store.state.toptitle="关 于"
+  },
 };
 </script>
 
@@ -88,19 +91,20 @@ export default {
   height: 100%;
 }
 .main {
-   width: 65%;
+  width: 65%;
   min-width: 900px;
-  min-height: 1800px;
-    background: white;
-  border-radius: 5px;
+  min-height: 900px;
+  background: rgb(255, 255, 255);
   margin: 10px auto;
-  border: 1px solid rgba(206, 206, 206, 0.8);
   display: flex;
+  border-radius: 10px;
   justify-content: space-between;
 }
 .content {
   display: block;
   width: 77%;
+  border-radius: 10px;
+  border: 1px solid rgba(206, 206, 206, 0.8);
   .top {
     width: 100%;
     height: 260px;
@@ -148,5 +152,10 @@ export default {
 }
 .rside {
   width: 23%;
+  margin-left: 10px;
+  border-radius: 10px;
+}
+.introduce{
+  margin-bottom: 10px;
 }
 </style>
