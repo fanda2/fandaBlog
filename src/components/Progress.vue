@@ -27,7 +27,7 @@ export default {
 <style lang="less" scoped>
 .p_content {
   width: 98%;
-  min-width: 190px;
+  min-width: 250px;
   margin: 10px auto;
   padding: 0 10px;
  border-radius: 10px;

@@ -63,7 +63,8 @@ export default {
     created(){
         this.getNowdata();
         this. getHour();
-          this.ipmsg=returnCitySN["cip"];
+        this.ipmsg=returnCitySN["cip"];
+        console.log('222',returnCitySN["cname"])
     },
     beforeDestroy(){
         clearInterval(this.timer)
@@ -74,8 +75,8 @@ export default {
 
 <style lang="less" scoped>
 .i_content{
-    width: 98%;
-     min-width: 202px;
+     width: 98%;
+     min-width: 250px;
     height: 200px;
     margin: 20px auto;
   // background: skyblue;

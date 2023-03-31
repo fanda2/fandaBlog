@@ -19,7 +19,7 @@ export default {
 <style>
 .bubble_body{
    width: 98%;
-    min-width: 202px;
+   min-width: 250px;
     height: 300px;
     margin: 10px auto;
     text-align: center;

@@ -1,65 +1,53 @@
 <template>
-  <div class="container">
-    <div class="main">
-      <div class="content">
-        <div class="top">
-          <div class="back">
-            <div class="backindex">
-              <a href="javascript: ;" @click="backindex">首页</a>
-            </div>
-            <div class="toptitle">/ {{ postmsg.title }}</div>
+  <div class="main">
+    <div class="content">
+      <div class="top">
+        <div class="back">
+          <div class="backindex">
+            <a href="javascript: ;" @click="backindex">首页</a>
           </div>
-          <div class="title">
-            {{ postmsg.title }}
-          </div>
-          <div class="postmsg">
-            <div class="h_one">{{ postmsg.stime }}</div>
-            <div class="h_two">{{ postmsg.seenum }}</div>
-            <div class="h_three">{{ postmsg.remark }}</div>
-          </div>
-          <div class="top_img">
-            <img :src="postmsg.cover" alt="文章封面图" />
-          </div>
-          <div class="description">
-            <div class="des"><span>description</span></div>
-            <div class="descontent">
-              {{postmsg.description}}
-            </div>
+          <div class="toptitle">/ {{ postmsg.title }}</div>
+        </div>
+        <div class="title">
+          {{ postmsg.title }}
+        </div>
+        <div class="postmsg">
+          <div class="h_one">{{ postmsg.stime }}</div>
+          <div class="h_two">{{ postmsg.seenum }}</div>
+          <div class="h_three">{{ postmsg.remark }}</div>
+        </div>
+        <div class="top_img">
+          <img :src="postmsg.cover" alt="文章封面图" />
+        </div>
+        <div class="description">
+          <div class="des"><span>description</span></div>
+          <div class="descontent">
+            {{ postmsg.description }}
           </div>
         </div>
-        <div class="des"><span>正文</span></div>
-        <div class="post_content">
-          <mavon-editor
-            :value="postmsg.content"
-            defaultOpen="preview"
-            :boxShadow="false"
-            style="z-index: 1; "
-            :editable="false"
-            :subfield="false"
-            :toolbarsFlag="false"
-          >
-          </mavon-editor>
-        </div>
-        <div class="remark"></div>
       </div>
-      <div class="rside">
-        <Message />
-        <IpAbout />
+      <div class="des"><span>正文</span></div>
+      <div class="post_content">
+        <mavon-editor
+          :value="postmsg.content"
+          defaultOpen="preview"
+          :boxShadow="false"
+          style="z-index: 1"
+          :editable="false"
+          :subfield="false"
+          :toolbarsFlag="false"
+        >
+        </mavon-editor>
       </div>
+      <div class="remark"></div>
     </div>
   </div>
 </template>
 
 <script>
 import { backTop } from "@/assets/js/backtop.js";
-import Message from "@/components/myMessage.vue";
-import IpAbout from "@/components/ipAbout.vue";
 export default {
   name: "Detial",
-  components: {
-    Message,
-    IpAbout,
-  },
   data() {
     return {
       postid: this.$route.query.postid,
@@ -92,31 +80,26 @@ export default {
     this.getpost();
     //  console.log("111"+);
   },
-  mounted(){
-    this.$store.state.toptitle="文章详情"
-  }
+  mounted() {
+    this.$store.state.toptitle = "文章详情";
+  },
 };
 </script>
 
 <style lang="less" scoped>
-.container {
-  width: 100%;
-  height: 100%;
-}
 .main {
-  width: 65%;
-  min-width: 900px;
+  width: 100%;
   min-height: 900px;
   margin: 10px auto;
   background: white;
   display: flex;
-   border-radius: 10px;
+  border-radius: 10px;
   justify-content: space-between;
 }
 .content {
+  overflow: auto;
   display: block;
-  width: 77%;
- border-radius: 10px;
+  border-radius: 10px;
   border: 1px solid rgba(206, 206, 206, 0.8);
   .pagenum {
     width: 100%;
@@ -175,19 +158,19 @@ export default {
         background-size: 20%;
       }
     }
-    .top_img{
+    .top_img {
       width: 98%;
       margin: 0 auto;
       // height: 240px;
       overflow: hidden;
-      img{
+      img {
         width: 100%;
       }
     }
-    .description{
+    .description {
       width: 98%;
       margin: 0 auto;
-      .descontent{
+      .descontent {
         font-size: 16px;
         color: #3c3c3c;
         margin: 20px 0;
@@ -195,44 +178,39 @@ export default {
     }
   }
 }
- .des{
-        line-height: 50px;
-        text-align: center;
-        font-size: 24px;
-        font-weight: bold;
-        color: #259db3;
-        position: relative;
-        span::before{
-          content: "";
-          height: 25px;
-          display: block;
-          width: 35%;
-          // background: orange;
-          position: absolute;
-          top: 25px;
-          left: 10px;
-          border-top: 1px solid #ccc;
-        }
-          span::after{
-          content: "";
-          height: 25px;
-          display: block;
-          width: 35%;
-           position: absolute;
-          top: 25px;
-          right: 10px;
-          border-top: 1px solid #ccc;
-        }
-      }
-.rside {
-  width: 23%;
-   margin-left: 10px;
-  border-radius: 10px;
+.des {
+  line-height: 50px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #259db3;
+  position: relative;
+  span::before {
+    content: "";
+    height: 25px;
+    display: block;
+    width: 35%;
+    // background: orange;
+    position: absolute;
+    top: 25px;
+    left: 10px;
+    border-top: 1px solid #ccc;
+  }
+  span::after {
+    content: "";
+    height: 25px;
+    display: block;
+    width: 35%;
+    position: absolute;
+    top: 25px;
+    right: 10px;
+    border-top: 1px solid #ccc;
+  }
 }
-.post_content{
+.post_content {
   min-height: 1000px;
-  mavon-editor{
-    min-height: 1000px!important;
+  mavon-editor {
+    min-height: 1000px !important;
   }
 }
 </style>

@@ -1,40 +1,33 @@
 <template>
-  <div class="container">
-    <div class="main">
-      <div class="content">
-        <div class="top">
-          <img src="../img/s3.jpg" alt="" />
+  <div class="main">
+    <div class="content">
+      <div class="top">
+        <img src="../img/s3.jpg" alt="" />
+      </div>
+      <div class="info">
+        <div class="avator">
+          <img src="../img/avator.jpg" alt="" />
         </div>
-        <div class="info">
-          <div class="avator">
-            <img src="../img/avator.jpg" alt="" />
-          </div>
-          <div class="msg">
-            <div class="nickname">fandaBlog</div>
-            <div class="sex"><span>四川 宜宾</span> | <span>男</span></div>
-            <div class="shuoshuo">{{ shuoshuo }}</div>
-          </div>
-        </div>
-        <div class="clock">
-          <Clock />
-        </div>
-         <div class="introduce">
-          <mavon-editor
-            :value="value"
-            defaultOpen="preview"
-            :boxShadow="false"
-            style="z-index: 1; height: 100vh"
-            :editable="false"
-            :subfield="false"
-            :toolbarsFlag="false"
-          >
-          </mavon-editor>
+        <div class="msg">
+          <div class="nickname">fandaBlog</div>
+          <div class="sex"><span>四川 宜宾</span> | <span>男</span></div>
+          <div class="shuoshuo">{{ shuoshuo }}</div>
         </div>
       </div>
-      <div class="rside">
-        <Message />
-        <IpAbout />
-        <myProgress />
+      <div class="clock">
+        <Clock />
+      </div>
+      <div class="introduce">
+        <mavon-editor
+          :value="value"
+          defaultOpen="preview"
+          :boxShadow="false"
+          style="z-index: 1; height: 100vh"
+          :editable="false"
+          :subfield="false"
+          :toolbarsFlag="false"
+        >
+        </mavon-editor>
       </div>
     </div>
   </div>
@@ -42,26 +35,19 @@
 
 <script>
 import Clock from "@/components/Clock.vue";
-import Message from "@/components/myMessage.vue";
-import IpAbout from "@/components/ipAbout.vue";
-import myProgress from '../components/Progress.vue'
 export default {
   components: {
     Clock,
-     Message,
-    IpAbout,
-    myProgress
   },
   data() {
     return {
       shuoshuo:
         "Hi,这里是梵大的博客，为了练习学到的东西,做了一个小站,希望大家多多建议，我会不断完善！",
-       value:
-      "",
+      value: "",
     };
   },
   methods: {
-      //获取文章信息
+    //获取文章信息
     async getpost() {
       var result = await this.$http.get("/post/post_byId", {
         params: {
@@ -76,23 +62,18 @@ export default {
     },
   },
   // 一般在初始化页面完成后，再对dom节点进行相关操作,
-  created(){
+  created() {
     this.getpost();
   },
   mounted() {
-        this.$store.state.toptitle="关 于"
+    this.$store.state.toptitle = "关 于";
   },
 };
 </script>
 
 <style lang="less" scoped>
-.container {
-  width: 100%;
-  height: 100%;
-}
 .main {
-  width: 65%;
-  min-width: 900px;
+  width: 100%;
   min-height: 900px;
   background: rgb(255, 255, 255);
   margin: 10px auto;
@@ -102,7 +83,6 @@ export default {
 }
 .content {
   display: block;
-  width: 77%;
   border-radius: 10px;
   border: 1px solid rgba(206, 206, 206, 0.8);
   .top {
@@ -155,7 +135,7 @@ export default {
   margin-left: 10px;
   border-radius: 10px;
 }
-.introduce{
+.introduce {
   margin-bottom: 10px;
 }
 </style>
