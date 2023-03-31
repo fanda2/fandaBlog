@@ -14,6 +14,7 @@
       <div class="container_left">
         <router-view  />
       </div>
+      <!-- 右部导航栏 -->
       <div class="container_right">
         <rightSide/>
       </div>
