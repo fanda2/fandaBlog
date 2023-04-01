@@ -48,7 +48,7 @@ export default {
 <style lang="less" scoped>
 .my_msg {
   width: 98%;
-  min-width: 250px;
+  min-width: 220px;
   height: 450px;
   margin: 10px auto;
   text-align: center;

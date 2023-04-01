@@ -24,12 +24,13 @@ export default {
 
     }
   },
+  
 };
 </script>
 
 <style>
 .rside {
-width: 200px;
+  width: 96%;
   margin-left: 10px;
   border-radius: 10px;
 }

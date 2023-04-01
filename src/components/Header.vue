@@ -3,8 +3,8 @@
   <div class="nav">
     <div class="header">
       <div class="left noselect">
-        <span class="blogname">{{ blogname }}</span>
-        <span class="motto">{{ motto }}</span>
+        <div class="blogname">{{ blogname }}</div>
+        <div class="motto">{{ motto }}</div>
       </div>
       <div class="right">
         <router-link to="/home" active-class="active"
@@ -42,6 +42,43 @@
           </div>
         </div>
       </div>
+      <div class="right_menu">
+        <img src="../img/menu.png" alt="" @click="isShowmenu = !isShowmenu" />
+        <div
+          class="right_menu-phone"
+          v-show="isShowmenu"
+          @click="showmenu"
+        >
+          <router-link to="/home" active-class="active"
+            ><div><i class="iconfont">&#xe609;</i> 首页</div></router-link
+          >
+          <router-link to="/practice" active-class="active"
+            ><div><i class="iconfont">&#xe660;</i> 实战</div></router-link
+          >
+          <router-link to="/file" active-class="active"
+            ><div><i class="iconfont">&#xe62f;</i> 归档</div></router-link
+          >
+          <router-link to="/chat" active-class="active"
+            ><div><i class="iconfont">&#xe62b;</i> 互动</div></router-link
+          >
+          <router-link to="/about" active-class="active"
+            ><div><i class="iconfont">&#xe659;</i> 关于</div></router-link
+          >
+
+          <router-link to="/space" active-class="active">
+            <div><i class="iconfont">&#xe619;</i> 空间</div></router-link
+          >
+          <router-link to="/photo" active-class="active"
+            ><div><i class="iconfont">&#xe7ff;</i> 图库</div></router-link
+          >
+          <router-link to="/todolist" active-class="active"
+            ><div><i class="iconfont">&#xe609;</i> TodoList</div></router-link
+          >
+          <div @click="go_qqemil" class="mailLogin">
+            <i class="iconfont">&#xe65e;</i> {{ loginbtn }}
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -54,6 +91,15 @@ export default {
       motto: "你若安好，我便无恙", //便是这世界上最美好的时光
       islogin: false,
       loginshow: false, //用于控制登录框是否显示
+      isShowmenu: false, //是否展示菜单
+      // navTitle: [
+      //   {
+      //     id: "001",
+      //     title: "首页",
+      //     fonticon: "&#xe609;",
+      //     topage: "/home",
+      //   },
+      // ],
     };
   },
   methods: {
@@ -62,9 +108,11 @@ export default {
     },
     //展示登录页面
     go_qqemil() {
-      this.mycanvas(); //重新加载背景
-      this.loginshow = true;
+      this.$store.commit('ChangeStatus',true)
     },
+    showmenu() {
+      this.isShowmenu=false  
+    }
   },
   computed: {
     loginbtn() {
@@ -89,24 +137,51 @@ export default {
     width: 350px;
     // min-width: 300px;
     background: url("../img/logo.png") no-repeat center left;
-    background-size: 15%;
-    text-align: right;
+    background-size: 40px;
+    display: flex;
+    justify-content: flex-start;
     span {
       margin-left: 10px;
       color: #3c3c3c;
     }
     .blogname {
       font: normal bold 16px "Fantasy";
+      padding-left: 50px;
+      line-height: 50px;
     }
     .motto {
       color: white;
       font-size: 14px;
+      padding-left: 10px;
+      line-height: blogname;
     }
   }
   //按钮被激活的样式
   .active div {
     color: rgb(194, 69, 194) !important;
     font-size: 16px;
+  }
+  .right_menu {
+    display: none;
+    line-height: 50px;
+    margin-right: 1%;
+    width: 40px;
+    z-index: 99;
+    text-align: center;
+    img {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
+    &-phone {
+      position: absolute;
+      border-radius: 5px;
+      box-shadow: 3px 3px 5px #a0a0a0;
+      top: 40px;
+      right: 10px;
+      width: 100px;
+      background: rgb(255, 255, 255);
+    }
   }
   .right {
     line-height: 50px;
@@ -153,9 +228,12 @@ export default {
     }
     .more:hover .box {
       height: 160px;
-      // display: block;
     }
   }
+}
+.mailLogin {
+  cursor: pointer;
+  user-select: none;
 }
 .right div:hover {
   color: rgb(245, 112, 35);
@@ -163,30 +241,6 @@ export default {
 }
 .back {
   cursor: pointer;
-}
-.login {
-  width: 400px;
-  height: 300px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  margin: -150px 0px 0px -200px;
-  background: orchid;
-  border-radius: 10px;
-  animation: show-box 0.5s ease;
-  z-index: 99;
-  .login_title {
-    line-height: 60px;
-    text-align: center;
-    font-weight: bold;
-    font-size: 24px;
-    color: white;
-    letter-spacing: 2px;
-  }
-  .form {
-    width: 90%;
-    margin: 0 auto;
-  }
 }
 @keyframes show-box {
   from {
@@ -198,6 +252,7 @@ export default {
     opacity: 1;
   }
 }
+
 .nav {
   width: 100%;
   height: 50px;
@@ -220,11 +275,30 @@ ul .iconfont {
   font-size: 16px;
 }
 
-//媒体查询
-@media screen and (max-width: 1080px) {
+//媒体查询,当宽度小于1400px时候
+@media screen and (max-width: 1400px) {
   .header {
+    .motto {
+      display: none;
+    }
+  }
+}
+
+//媒体查询，当宽度小于1080px时候，则为手机端显示效果
+@media screen and (max-width: 950px) {
+  .header {
+    width: 98%;
+    .left {
+      background: url("");
+      .blogname {
+        padding-left: 0px;
+      }
+    }
     .right {
       display: none;
+    }
+    .right_menu {
+      display: block;
     }
   }
 }

@@ -76,7 +76,7 @@ export default {
 <style lang="less" scoped>
 .i_content{
      width: 98%;
-     min-width: 250px;
+     min-width: 220px;
     height: 200px;
     margin: 20px auto;
   // background: skyblue;
