@@ -45,13 +45,12 @@ export default {
 <style lang="less" scoped>
 .itemcontainer {
   width: 98%;
-  height: 350px;
   margin: 10px auto;
   background: rgb(255, 255, 255);
   border-radius: 10px;
   box-shadow: 4px 4px 4px #ccc;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  div {
+  .top {
     width: 98%;
     margin: 0 auto;
   }
@@ -60,29 +59,30 @@ export default {
     font: normal bold 24px/50px "黑体";
   }
   .submsg {
-    width: 50%;
+    // width: 100%;
     line-height: 30px;
-    margin-left:0px ;
+    margin-left:5px ;
     display: flex;
     justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
     div{
       line-height: 30px;
-      text-align: center;
+      padding-left: 28px;
     };
     div:first-child{
-      width: 50%;
       background: url("../img/data.png") no-repeat center left;
-      background-size: 10%;
+      background-size: 20px;
     };
     .h_two{
-      width: 25%;
-        background: url("../img/hot.png") no-repeat center left;
-      background-size: 20%;
+      background: url("../img/hot.png") no-repeat center left;
+      background-size: 20px;
+      margin-left: 10px
     };
     div:last-child{
-        width: 25%;
        background: url("../img/remark.png") no-repeat center left;
-      background-size: 20%;
+      background-size: 20px;
+      margin-left: 10px
     }
   }
   .center {
@@ -118,5 +118,14 @@ export default {
      to{
          transform: translateX(0);
      }
+ }
+
+ @media screen and(max-width: 950px) {
+  .submsg{
+    width: 100%;
+  }
+  .itemcontainer .center{
+    height: 150px;
+  }
  }
 </style>

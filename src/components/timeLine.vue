@@ -46,7 +46,7 @@ export default {
   position: relative;
   .left {
     width: 98%;
-    height: 250px;
+    height: 200px;
     margin: 10px auto;
     position: relative;
   }

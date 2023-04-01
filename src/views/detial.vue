@@ -123,7 +123,7 @@ export default {
         width: 40px;
       }
       .toptitle {
-        width: 40%;
+        width: 60%;
       }
     }
     .title {
@@ -137,25 +137,28 @@ export default {
       letter-spacing: 4px;
     }
     .postmsg {
-      width: 40%;
+      width: 96%;
       margin: 0 auto;
       line-height: 60px;
-      text-align: center;
       display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      div{
+        padding-left: 24px;
+      }
       div:first-child {
-        width: 50%;
         background: url("../img/data.png") no-repeat center left;
-        background-size: 10%;
+        background-size: 20px;
       }
       .h_two {
-        width: 25%;
         background: url("../img/hot.png") no-repeat center left;
-        background-size: 20%;
+        background-size: 20px;
+        margin-left: 10px;
       }
       div:last-child {
-        width: 25%;
         background: url("../img/remark.png") no-repeat center left;
-        background-size: 20%;
+        background-size: 20px;
+        margin-left: 10px;
       }
     }
     .top_img {
@@ -189,7 +192,7 @@ export default {
     content: "";
     height: 25px;
     display: block;
-    width: 35%;
+    width: 31%;
     // background: orange;
     position: absolute;
     top: 25px;
@@ -200,7 +203,7 @@ export default {
     content: "";
     height: 25px;
     display: block;
-    width: 35%;
+    width: 31%;
     position: absolute;
     top: 25px;
     right: 10px;
@@ -213,4 +216,5 @@ export default {
     min-height: 1000px !important;
   }
 }
+
 </style>

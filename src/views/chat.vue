@@ -13,7 +13,7 @@
       </div>
       <div class="line"></div>
       <div class="bottom">
-        <center><h1>添加/修改友链信息</h1></center>
+        <center><h2>添加/修改友链信息</h2></center>
         <Form :model="formData" label-position="left" :label-width="100">
           <FormItem label="网站名称：">
             <Input v-model="formData.webname"></Input>
@@ -98,10 +98,12 @@ export default {
 .link {
   margin: 0 auto;
   display: flex;
+  justify-content: space-around;
   flex-flow: wrap;
   padding-bottom: 50px;
   .item {
     width: 30%;
+    min-width: 240px;
     margin: 10px 1.6%;
   }
 }
@@ -109,8 +111,8 @@ export default {
   // margin-top: 40px;
   width: 50%;
   margin: 100px auto;
-  h1 {
-    line-height: 50px;
+  h2 {
+    line-height: 80px;
   }
 }
 .line {
@@ -126,5 +128,13 @@ export default {
     transparent 0,
     transparent 8px
   );
+}
+
+//媒体查询，当宽度小于1080px时候，则为手机端显示效果
+@media screen and (max-width: 950px) {
+  .bottom {
+    width: 98%;
+   
+    }
 }
 </style>

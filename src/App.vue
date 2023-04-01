@@ -19,6 +19,11 @@
         <rightSide/>
       </div>
     </div>
+
+    <!-- 邮箱登录弹窗 -->
+    <div v-if="mailLogin" class="mailBox">
+      <mailLogin/>
+    </div>
     
     <!-- 底部导航栏 -->
     <Footer></Footer>
@@ -32,9 +37,10 @@ import { backTop, showbtn } from "@/assets/js/backtop.js";
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
 import rightSide from './components/rightSide.vue'
+import mailLogin from './components/mail.vue'
 
 export default {
-  components:{Header,Footer,rightSide},
+  components:{Header,Footer,rightSide,mailLogin},
   data() {
     return {
       // 顶部banner图片显示随机列表
@@ -52,15 +58,18 @@ export default {
       bgObj: {
         backgroundImage: "url('http://www.fjtbkyc.net/bgImg/background1.jpg')",
         color: "red",
-      },
+      }
     };
   },
-
+  
   computed: {
     //利用vuex显示顶部标题
     toptitle() {
       return this.$store.state.toptitle;
     },
+    mailLogin(){
+      return this.$store.state.loginBox;
+    }
   },
 
   methods: {
@@ -88,12 +97,10 @@ export default {
       });
     },
   },
-
   // 一般在初始化页面完成后，再对dom节点进行相关操作,
   created() {
     this.getBackground();
   },
-
   mounted() {
     window.addEventListener("scroll", this.conss);
     var img = document.querySelector(".back");
@@ -101,6 +108,8 @@ export default {
   },
 };
 </script>
+
+
 <style lang="less" scoped>
 @import "./assets/css/backtop.css";
 #app {
@@ -110,8 +119,6 @@ export default {
   // text-align: center;
   color: #2c3e50;
 }
-
-
 .banner {
   width: 100%;
   height: 400px;
@@ -138,15 +145,27 @@ export default {
 
 //内容样式定义
 .container{
- width: 70%;
+ width: 65%;
  margin: 0 auto;
  display: flex;
  justify-content: space-around;
  &_left{
-  width: 80%;
+  width: 75%;
  }
- &right{
-  width: 18%;
+ &_right{
+  width: 24%;
  }
+}
+@media screen and (max-width: 950px) {
+ .container_right,.scroll,.banner{
+   display: none;
+ }
+ .container_left{
+  width: 100%;
+ }
+ .container{
+  width: 98%;
+ }
+
 }
 </style>
