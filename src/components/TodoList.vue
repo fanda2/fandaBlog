@@ -59,7 +59,6 @@ export default {
       });
     },
     todoEdit(Msg, data) {
-      console.log("接收到的数据为", data);
       this.todolist.forEach((todo) => {
         if (todo.id === data.id) todo.title = data.title;
       });
@@ -76,7 +75,6 @@ export default {
   mounted() {
     (this.pubid = pubsub.subscribe("checkTodo", (MsgName, data) => {
       this.checkTodo(data);
-      console.log(MsgName);
     })),
       (this.pubid2 = pubsub.subscribe("todoEdit", this.todoEdit));
   },

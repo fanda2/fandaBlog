@@ -37,7 +37,6 @@ export default {
     {
         var time=timeNow()
         var hh=time.split(" ")[1].substr(0,2)
-        console.log(hh);
         if(hh>0&&hh<=5)
         {
             this.suggest=this.suggestions[0];
@@ -64,7 +63,6 @@ export default {
         this.getNowdata();
         this. getHour();
         this.ipmsg=returnCitySN["cip"];
-        console.log('222',returnCitySN["cname"])
     },
     beforeDestroy(){
         clearInterval(this.timer)

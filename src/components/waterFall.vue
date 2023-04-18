@@ -84,7 +84,7 @@ export default {
           }
           resolve();
         }, 500);
-        console.log(reject);
+        reject();
       });
     },
     //获取高度
@@ -117,7 +117,6 @@ export default {
       let cWidth = this.$refs.wcontent.clientWidth;
       // 假设图片宽度为100px
       let cLen = Math.floor(cWidth / 200 - 1)+1;
-      console.log(cLen,cWidth);
       // 初始化每一列的第一行元素
       for (let i = 0; i < cLen; i++) {
         this.contentArr[i].top = 0; //预设距离顶部值为0
@@ -154,9 +153,7 @@ export default {
   mounted() {
     this.init();
     window.onresize = () => {
-      console.time("aa");
       this.init();
-      console.timeEnd("aa");
     };
     let clientH =document.documentElement.clientHeight || document.body.clientHeight;
     document.onscroll = (e) => {

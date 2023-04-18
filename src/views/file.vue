@@ -71,7 +71,6 @@ export default {
           page: this.query.page,
         },
       });
-      console.log(result);
       if (result.status == 200) {
         this.time_line = result.data.row;
       } else {
@@ -81,7 +80,6 @@ export default {
     //使用代理服务的方法解决跨域
     async get_context() {
       var result=await axios.get('https://saying.api.azwcl.com/saying/get')
-      console.log(result)
      if(result.code==200)
      {
        this.context=result.data.content
