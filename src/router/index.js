@@ -4,7 +4,9 @@ import Index from "../views/index.vue";
 
 Vue.use(VueRouter);
 
-const routes = [{
+const routes = [
+    { path: "/", redirect: "/home" },
+    {
         path: "/home",
         name: "index",
         component: Index,
@@ -72,6 +74,7 @@ const routes = [{
 
 const router = new VueRouter({
     routes,
+    mode: 'history'
 });
 
 router.afterEach((to) => {

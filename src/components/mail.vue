@@ -24,9 +24,9 @@ export default {
     }
   },
   mounted(){
-    window.addEventListener("click",function(){
-      console.log(this)
-    });
+    // window.addEventListener("click",function(){
+    //   console.log(this)
+    // });
     // var img = document.querySelector(".back");
     // img.addEventListener("click", this.backtop);
   }

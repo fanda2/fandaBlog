@@ -48,7 +48,6 @@ export default {
           page: this.query.page,
         },
       });
-      console.log(result);
       if (result.status == 200) {
         this.$Message.success("加载成功~");
         this.postmsg = result.data.row;
@@ -68,7 +67,6 @@ export default {
     pagechange(e) {
       this.query.page = e;
       this.get_postlist();
-      console.log("目前处于第：", e);
     },
     //查看详情
     godetial(e) {

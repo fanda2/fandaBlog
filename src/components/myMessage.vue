@@ -23,9 +23,6 @@
 export default {
   name: "myMessage",
   props: {},
-  created() {
-    this.getMyinfo();
-  },
   data() {
     return {
       myinfo: {
@@ -36,11 +33,6 @@ export default {
 
       },
     };
-  },
-  methods: {
-    getMyinfo() {
-      console.log("获取用户信息");
-    },
   },
 };
 </script>

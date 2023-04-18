@@ -78,7 +78,6 @@ export default {
   },
   created() {
     this.getpost();
-    //  console.log("111"+);
   },
   mounted() {
     this.$store.state.toptitle = "文章详情";

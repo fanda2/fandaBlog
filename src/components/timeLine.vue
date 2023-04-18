@@ -34,9 +34,6 @@ export default {
       },
     },
   },
-  created() {
-    console.log(this.timeLine);
-  },
 };
 </script>
 
