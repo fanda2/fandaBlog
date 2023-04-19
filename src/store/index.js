@@ -11,12 +11,16 @@ const actions = {
 const mutations = {
     ChangeStatus(state, value) {
         state.loginBox = value;
+    },
+    ChangeMenuStatus(state,value){
+        state.isShowmenu=value
     }
 
 }
 const state = {
     toptitle: 'fanda 的博客，欢迎你的光顾~',
     loginBox: false,
+    isShowmenu:false
 }
 
 const getters = {

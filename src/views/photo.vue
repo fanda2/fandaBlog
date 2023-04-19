@@ -38,6 +38,7 @@ export default {
 .content{
   display: block;
   width: 100%;
+  overflow: hidden;
    border-radius: 10px;
   border: 1px solid rgba(206, 206, 206, 0.8);
   .pagenum{

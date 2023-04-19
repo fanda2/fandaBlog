@@ -1,5 +1,12 @@
 <template>
-  <div id="app">
+  <div id="app" ref="Apppage">
+    <!-- 黑色遮召 -->
+    <div
+      v-show="isShowMenu"
+      class="blackBox"
+      :style="{ height: wHeight + 'px' }"
+      @click="hiddenMenu"
+    ></div>
     <Header></Header>
     <!-- 返回顶部图标 -->
     <div class="scroll">
@@ -12,22 +19,21 @@
     <!-- 根据路由显示内容 -->
     <div class="container">
       <div class="container_left">
-        <router-view  />
+        <router-view />
       </div>
       <!-- 右部导航栏 -->
       <div class="container_right">
-        <rightSide/>
+        <rightSide />
       </div>
     </div>
 
     <!-- 邮箱登录弹窗 -->
     <div v-if="mailLogin" class="mailBox">
-      <mailLogin/>
+      <mailLogin />
     </div>
-    
+
     <!-- 底部导航栏 -->
     <Footer></Footer>
-  
   </div>
 </template>
 
@@ -36,11 +42,11 @@ import { backTop, showbtn } from "@/assets/js/backtop.js";
 
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
-import rightSide from './components/rightSide.vue'
-import mailLogin from './components/mail.vue'
+import rightSide from "./components/rightSide.vue";
+import mailLogin from "./components/mail.vue";
 
 export default {
-  components:{Header,Footer,rightSide,mailLogin},
+  components: { Header, Footer, rightSide, mailLogin },
   data() {
     return {
       // 顶部banner图片显示随机列表
@@ -58,17 +64,22 @@ export default {
       bgObj: {
         backgroundImage: "url('http://www.fjtbkyc.net/bgImg/background1.jpg')",
         color: "red",
-      }
+      },
+      isShowmenu: false,
+      //窗口高度
+      wHeight: 400,
     };
   },
-  
   computed: {
     //利用vuex显示顶部标题
     toptitle() {
       return this.$store.state.toptitle;
     },
-    mailLogin(){
+    mailLogin() {
       return this.$store.state.loginBox;
+    },
+    isShowMenu(){
+      return this.$store.state.isShowmenu;
     }
   },
 
@@ -86,7 +97,7 @@ export default {
     backtop() {
       backTop();
     },
- 
+
     handleSubmit(name) {
       this.$refs[name].validate((valid) => {
         if (valid) {
@@ -96,6 +107,17 @@ export default {
         }
       });
     },
+    //当点击下拉菜单时候显示
+    getPageHeight() {
+      const content = this.$refs.Apppage;
+      this.wHeight = content.clientHeight-50;
+      this.isShowmenu = true;
+    },
+    //隐藏菜单
+    hiddenMenu(){
+      this.$store.commit("ChangeMenuStatus",false);
+    }
+    //隐藏
   },
   // 一般在初始化页面完成后，再对dom节点进行相关操作,
   created() {
@@ -108,7 +130,6 @@ export default {
   },
 };
 </script>
-
 
 <style lang="less" scoped>
 @import "./assets/css/backtop.css";
@@ -144,28 +165,39 @@ export default {
 }
 
 //内容样式定义
-.container{
- width: 65%;
- margin: 0 auto;
- display: flex;
- justify-content: space-around;
- &_left{
-  width: 75%;
- }
- &_right{
-  width: 24%;
- }
+.container {
+  width: 65%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  &_left {
+    width: 75%;
+  }
+  &_right {
+    width: 24%;
+  }
 }
 @media screen and (max-width: 950px) {
- .container_right,.scroll,.banner{
-   display: none;
- }
- .container_left{
+  .container_right,
+  .scroll,
+  .banner {
+    display: none;
+  }
+  .container_left {
+    width: 100%;
+  }
+  .container {
+    width: 98%;
+  }
+}
+.blackBox {
+  position: absolute;
+  left: 0;
+  top: 50px;
+  opacity: 0.4;
+  z-index: 12;
   width: 100%;
- }
- .container{
-  width: 98%;
- }
-
+  // height:100%;
+  background: rgb(99, 99, 99);
 }
 </style>

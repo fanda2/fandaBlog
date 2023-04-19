@@ -2,7 +2,7 @@
   <!-- 头部 -->
   <div class="nav">
     <div class="header">
-      <div class="left noselect">
+      <div class="left noselect" @click="hiddenMenu">
         <div class="blogname">{{ blogname }}</div>
         <div class="motto">{{ motto }}</div>
       </div>
@@ -38,16 +38,16 @@
               <li @click="go_qqemil">
                 <i class="iconfont">&#xe65e;</i> {{ loginbtn }}
               </li>
-            </ul>
+            </ul> 
           </div>
         </div>
       </div>
       <div class="right_menu">
-        <img src="../img/menu.png" alt="" @click="isShowmenu = !isShowmenu" />
+        <img src="../img/menu.png" alt="" @click="btnShowMenu" />
         <div
           class="right_menu-phone"
-          v-show="isShowmenu"
-          @click="showmenu"
+          v-show="showMenu"
+          @click="hiddenMenu"
         >
           <router-link to="/home" active-class="active"
             ><div><i class="iconfont">&#xe609;</i> 首页</div></router-link
@@ -84,6 +84,7 @@
 </template>
 
 <script>
+// import { ref } from 'vue';
 export default {
   data() {
     return {
@@ -91,16 +92,10 @@ export default {
       motto: "你若安好，我便无恙", //便是这世界上最美好的时光
       islogin: false,
       loginshow: false, //用于控制登录框是否显示
-      isShowmenu: false, //是否展示菜单
-      // navTitle: [
-      //   {
-      //     id: "001",
-      //     title: "首页",
-      //     fonticon: "&#xe609;",
-      //     topage: "/home",
-      //   },
-      // ],
     };
+  },
+  mounted(){
+   console.log(this.$store)
   },
   methods: {
     goAdmin() {
@@ -108,10 +103,14 @@ export default {
     },
     //展示登录页面
     go_qqemil() {
-      this.$store.commit('ChangeStatus',true)
+      this.$store.commit("ChangeStatus", true);
     },
-    showmenu() {
-      this.isShowmenu=false  
+    hiddenMenu() {
+      this.$store.commit("ChangeMenuStatus", false);
+    },
+    btnShowMenu(){
+      this.$store.commit("ChangeMenuStatus",!this.$store.state.isShowmenu);
+      this.$parent.getPageHeight();
     }
   },
   computed: {
@@ -122,6 +121,9 @@ export default {
         return "qq邮箱登录";
       }
     },
+    showMenu(){
+      return this.$store.state.isShowmenu
+    }
   },
 };
 </script>
@@ -302,4 +304,16 @@ ul .iconfont {
     }
   }
 }
+.van-dropdown-menu {
+  background: salmon;
+
+  .van-dropdown-item {
+    width: 20%;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    transform: translate(-100%, 0);
+  }
+}
+
 </style>

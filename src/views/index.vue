@@ -97,6 +97,7 @@ export default {
   justify-content: space-between;
 }
 .content {
+  width: 100%;
   display: block;
   border-radius: 10px;
   border: 1px solid rgba(206, 206, 206, 0.8);

@@ -17,6 +17,20 @@ import 'mavon-editor/dist/css/index.css'
 import store from './store/index'
 
 
+
+
+// UI组件引入
+// 1. 引入你需要的组件
+import { Button,DropdownMenu, DropdownItem ,ImagePreview} from 'vant';
+// 2. 引入组件样式
+import 'vant/lib/index.css';
+// 3. 注册你需要的组件
+Vue.use(Button);
+Vue.use(DropdownMenu);
+Vue.use(DropdownItem);
+Vue.use(ImagePreview);
+
+
 // use
 Vue.use(mavonEditor)
 new Vue({
